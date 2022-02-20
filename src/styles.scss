@@ -1,0 +1,35 @@
+$primary-color: #ffeb00;
+$secondary-color: #dd2a30;
+$shadow: black;
+
+h1 {
+  color: $primary-color;
+  text-transform: uppercase;
+  text-shadow: -1px 0 $shadow, -1px 0 $shadow, 0 1px $shadow, 1px 0 $shadow,
+    0 -1px $shadow, 1px 0px 0px $shadow, 2px 1px 0px $shadow,
+    3px 2px 0px $shadow, 4px 3px 0px $shadow, 5px 4px 0px $shadow;
+  letter-spacing: 3px;
+  border-bottom: 5px solid $secondary-color;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 2rem;
+}
+
+.container {
+  display: flex;
+  border: 1px solid black;
+  gap: 2rem;
+}
+ 
+.template {
+  position: relative;
+  border: 1px solid red;
+  width: 50%;
+  height: 30rem;
+  display: flex;
+}

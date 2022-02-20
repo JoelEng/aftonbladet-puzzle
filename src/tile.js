@@ -2,8 +2,9 @@ import currentTile from "./globals"
 
 //A tile is a puzzle piece
 export default function tile(x, y) {
-  let posX = x + "px"
-  let posY = y + "px"
+  const parentPos = document.getElementById("rack").getBoundingClientRect()
+  let posX = `calc(${parentPos.left}px + ${x}px)`
+  let posY = `calc(${parentPos.top}px + ${y}px)`
   let mouseOriginX = 0
   let mouseOriginY = 0
 
@@ -28,7 +29,6 @@ export default function tile(x, y) {
   }
   
   function mouseMove(e) {
-    console.log("det här ska va rätt", tile.getBoundingClientRect().top)
     tile.style.left = `calc(${posX} + ${e.clientX - mouseOriginX}px)`
     tile.style.top = `calc(${posY} + ${e.clientY - mouseOriginY}px)`
   }

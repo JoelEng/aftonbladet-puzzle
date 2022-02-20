@@ -9,7 +9,10 @@ export default function slot(x, y) {
   slot.style.top = `${y}px`
 
   function handleDrop() {
-    currentTile.handleDrop(slot.style.left, slot.style.top)
+    const parentPos = document.getElementById("template").getBoundingClientRect()
+    const posX = `calc(${slot.style.left} + ${parentPos.left}px`
+    const posY = `calc(${slot.style.top} + ${parentPos.top}px`
+    currentTile.handleDrop(posX, posY)
   }
 
   return slot

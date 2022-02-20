@@ -33,3 +33,20 @@ body {
   height: 30rem;
   display: flex;
 }
+
+.tile {
+  position: absolute;
+  height: 100px;
+  width: 150px;
+  background-color: pink;
+  border: 1px solid white;
+  transition: all 0.05s;
+}
+
+.slot {
+  position: absolute;
+  height: 100px;
+  width: 150px;
+  background-color: skyblue;
+  border: 1px solid white;
+}

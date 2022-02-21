@@ -1,4 +1,4 @@
-import currentTile from "./globals"
+import { currentTile, tiles } from "./globals"
 
 //A tile is a puzzle piece
 export default function tile(x, y, imgX, imgY) {
@@ -7,6 +7,7 @@ export default function tile(x, y, imgX, imgY) {
   let posY = `calc(${parentPos.top}px + ${y}px)`
   let mouseOriginX = 0
   let mouseOriginY = 0
+  let correct = false
 
   //Initial state
   const tile = document.createElement("div")
@@ -26,9 +27,17 @@ export default function tile(x, y, imgX, imgY) {
   //Triggers on clicking tile 
   tile.onmousedown = mouseDown
   function mouseDown(e) {
+    if (correct) {
+      notCorrect()
+    }
     mouseOriginX = e.clientX
     mouseOriginY = e.clientY
     currentTile.handleDrop = handleDrop
+    currentTile.x = imgX
+    currentTile.y = imgY
+    currentTile.isCorrect = isCorrect
+    currentTile.notCorrect = notCorrect
+    currentTile.mouseDown = mouseDown
     //mouseMove and mouseUp are added on document-level so as to be detectable outside the tile
     document.addEventListener("mousemove", mouseMove)
     document.addEventListener("mouseup", mouseUp)
@@ -41,12 +50,13 @@ export default function tile(x, y, imgX, imgY) {
     tile.style.top = `calc(${posY} + ${e.clientY - mouseOriginY}px)`
   }
   
-  function mouseUp(e) {
+  function mouseUp() {
     posX = tile.style.left
     posY = tile.style.top
     document.removeEventListener("mousemove", mouseMove)
     document.removeEventListener("mouseup", mouseUp)
     tile.style.pointerEvents = "all"
+    console.log(tiles.correct)
   }
 
   //Called from a slot-function when released over it
@@ -55,6 +65,18 @@ export default function tile(x, y, imgX, imgY) {
     posY = y
     tile.style.left = posX
     tile.style.top = posY
+  }
+
+  function isCorrect() {
+    correct = true
+    currentTile.correct = true
+    tiles.correct++
+  }
+
+  function notCorrect() {
+    correct = false
+    currentTile.correct = false
+    tiles.correct--
   }
 
   return tile

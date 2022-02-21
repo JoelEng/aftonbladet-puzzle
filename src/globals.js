@@ -1,2 +1,2 @@
-const currentTile = {}
-export default currentTile
+export const currentTile = {}
+export const tiles = {correct: 0}

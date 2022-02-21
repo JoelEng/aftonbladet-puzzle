@@ -1,8 +1,8 @@
 {
-  "name": "starter-kit",
+  "name": "aftonbladet-puzzle",
   "version": "1.0.0",
   "private": true,
-  "description": "Starter kit for frontend task",
+  "description": "Aftonbladet summer internship 2022 code task",
   "engines": {
     "node": ">=14.x"
   },
@@ -11,7 +11,7 @@
     "build": "webpack --mode production",
     "test": "jest"
   },
-  "author": "schibsted",
+  "author": "joel",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.16.7",

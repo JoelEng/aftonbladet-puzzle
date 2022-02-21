@@ -18,6 +18,6 @@ for (let i = 0; i < 4; i++) {
 container.append(rack)
 for (let i = 0; i < 4; i++) {
   for (let j = 0; j < 4; j++) {
-    rack.append(tile(i * 150, j * 100))
+    rack.append(tile(i * 150, j * 100, i * 150, j * 100))
   }
 }

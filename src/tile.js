@@ -18,7 +18,7 @@ export default function tile(x, y, imgX, imgY) {
   tile.style.height = tiles.height
 
   const img = document.createElement("img")
-  img.src = "https://adminassets.devops.arabiaweather.com/sites/default/files/field/image/mountains.jpg"
+  img.src = image.src
   img.alt = "mountains"
   img.style.width = image.width
   img.style.position = "absolute"
@@ -55,15 +55,16 @@ export default function tile(x, y, imgX, imgY) {
   function mouseMove(e) {
     tile.style.left = `calc(${posX} + ${e.clientX - mouseOriginX}px)`
     tile.style.top = `calc(${posY} + ${e.clientY - mouseOriginY}px)`
+    e.preventDefault()
   }
   
-  function mouseUp() {
+  function mouseUp(e) {
     posX = tile.style.left
     posY = tile.style.top
     document.removeEventListener("mousemove", mouseMove)
     document.removeEventListener("mouseup", mouseUp)
     tile.style.pointerEvents = "all"
-    console.log(tiles.correct)
+    e.preventDefault()
   }
 
   //Called from a slot-function when released over it

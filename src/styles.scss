@@ -22,28 +22,25 @@ body {
 
 .container {
   display: flex;
-  border: 1px solid black;
-  gap: 2rem;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
  
 .template {
   position: relative;
-  border: 1px solid red;
-  width: 50%;
+  width: 40%;
   height: 30rem;
   display: flex;
 }
 
 .tile {
   position: fixed;
-  background-color: pink;
   border: 1px solid white;
-  transition: all 0.05s;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .slot {
   position: absolute;
-  background-color: skyblue;
-  border: 1px solid white;
+  border: 1px dashed gray;
 }

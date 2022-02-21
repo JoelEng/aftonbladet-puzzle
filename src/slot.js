@@ -13,19 +13,19 @@ export default function slot(x, y) {
 
   function handleClick(e) {
     //emulate pressing on current tile when slot is pressed
-    currentTile.mouseDown(e)
+    currentTile.mouseDown && currentTile.mouseDown(e)
   }
 
   function handleDrop() {
+    const parentPos = document.getElementById("template").getBoundingClientRect()
+    const posX = `calc(${slot.style.left} + ${parentPos.left}px`
+    const posY = `calc(${slot.style.top} + ${parentPos.top}px`
+    currentTile.handleDrop && currentTile.handleDrop(posX, posY)
+
     if (currentTile.x === x && currentTile.y === y) {
       currentTile.isCorrect()
       checkWin()
     }
-
-    const parentPos = document.getElementById("template").getBoundingClientRect()
-    const posX = `calc(${slot.style.left} + ${parentPos.left}px`
-    const posY = `calc(${slot.style.top} + ${parentPos.top}px`
-    currentTile.handleDrop(posX, posY)
   }
 
   return slot
@@ -33,6 +33,6 @@ export default function slot(x, y) {
 
 function checkWin() {
   if (tiles.correct == tiles.countX * tiles.countY) {
-    console.log("You've won!")
+    alert("Congratulations, you've won!")
   }
 }

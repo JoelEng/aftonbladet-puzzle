@@ -3,8 +3,8 @@ import { currentTile, tiles, image } from "./globals"
 //A tile is a puzzle piece
 export default function tile(x, y, imgX, imgY) {
   const parentPos = document.getElementById("rack").getBoundingClientRect()
-  let posX = `calc(${parentPos.left}px + ${x} * ${tiles.width})`
-  let posY = `calc(${parentPos.top}px + ${y} * ${tiles.height})`
+  let posX = `calc(${parentPos.left}px + ${x})`
+  let posY = `calc(${parentPos.top}px + ${y})`
   let mouseOriginX = 0
   let mouseOriginY = 0
   let correct = false

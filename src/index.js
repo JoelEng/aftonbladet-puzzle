@@ -62,9 +62,13 @@ function addPuzzle() {
       template.append(slot(i, j))
     }
   }
+  const widthRange = `calc(${image.width} - ${tiles.width})`
+  const heightRange = `calc(${image.height} - ${tiles.height})`
   for (let i = 0; i < tiles.countX; i++) {
     for (let j = 0; j < tiles.countY; j++) {
-      rack.append(tile(i, j, i, j))
+      const x = `calc(${Math.random()} * ${widthRange})`
+      const y = `calc(${Math.random()} * ${heightRange})`
+      rack.append(tile(x, y, i, j))
     }
   }
 }

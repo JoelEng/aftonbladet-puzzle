@@ -1,10 +1,10 @@
-import { currentTile, tiles } from "./globals"
+import { currentTile, tiles, image } from "./globals"
 
 //A tile is a puzzle piece
 export default function tile(x, y, imgX, imgY) {
   const parentPos = document.getElementById("rack").getBoundingClientRect()
-  let posX = `calc(${parentPos.left}px + ${x}px)`
-  let posY = `calc(${parentPos.top}px + ${y}px)`
+  let posX = `calc(${parentPos.left}px + ${x} * ${tiles.width})`
+  let posY = `calc(${parentPos.top}px + ${y} * ${tiles.height})`
   let mouseOriginX = 0
   let mouseOriginY = 0
   let correct = false
@@ -14,14 +14,16 @@ export default function tile(x, y, imgX, imgY) {
   tile.classList.add("tile")
   tile.style.left = posX
   tile.style.top = posY
+  tile.style.width = tiles.width
+  tile.style.height = tiles.height
 
   const img = document.createElement("img")
   img.src = "https://adminassets.devops.arabiaweather.com/sites/default/files/field/image/mountains.jpg"
   img.alt = "mountains"
-  img.width = "600"
+  img.style.width = image.width
   img.style.position = "absolute"
-  img.style.left = `-${imgX}px`
-  img.style.top = `-${imgY}px`
+  img.style.left = `calc(-${imgX} * ${tiles.width})`
+  img.style.top = `calc(-${imgY} * ${tiles.height})`
   tile.append(img)
 
   //Triggers on clicking tile 
@@ -38,6 +40,11 @@ export default function tile(x, y, imgX, imgY) {
     currentTile.isCorrect = isCorrect
     currentTile.notCorrect = notCorrect
     currentTile.mouseDown = mouseDown
+
+    //Tile is moved to the front
+    currentTile.zIndex++
+    tile.style.zIndex = currentTile.zIndex
+    
     //mouseMove and mouseUp are added on document-level so as to be detectable outside the tile
     document.addEventListener("mousemove", mouseMove)
     document.addEventListener("mouseup", mouseUp)

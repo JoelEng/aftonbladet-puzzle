@@ -6,8 +6,10 @@ export default function slot(x, y) {
   slot.classList.add("slot")
   slot.onmouseup = handleDrop
   slot.onmousedown = handleClick
-  slot.style.left = `${x}px`
-  slot.style.top = `${y}px`
+  slot.style.left = `calc(${x} * ${tiles.width})`
+  slot.style.top = `calc(${y} * ${tiles.height})`
+  slot.style.width = tiles.width
+  slot.style.height = tiles.height
 
   function handleClick(e) {
     //emulate pressing on current tile when slot is pressed
@@ -30,7 +32,7 @@ export default function slot(x, y) {
 }
 
 function checkWin() {
-  if (tiles.correct == 4) {
+  if (tiles.correct == tiles.countX * tiles.countY) {
     console.log("You've won!")
   }
 }

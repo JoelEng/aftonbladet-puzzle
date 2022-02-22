@@ -26,6 +26,10 @@ export default function tile(x, y, imgX, imgY) {
   img.style.top = `calc(-${imgY} * ${tiles.height})`
   tile.append(img)
 
+  const borderOverlay = document.createElement("div")
+  borderOverlay.classList.add("borderOverlay")
+  tile.append(borderOverlay)
+
   //Triggers on clicking tile 
   tile.onmousedown = mouseDown
   function mouseDown(e) {

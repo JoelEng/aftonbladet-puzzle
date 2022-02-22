@@ -33,6 +33,10 @@ export default function slot(x, y) {
 
 function checkWin() {
   if (tiles.correct == tiles.countX * tiles.countY) {
-    alert("Congratulations, you've won!")
+    const borders = document.getElementsByClassName("borderOverlay")
+    for (let i = 0; i < borders.length; i++) {
+      borders[i].style.border = "none"
+    }
+    alert("Congratulations, you've completed the puzzle!")
   }
 }
